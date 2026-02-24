@@ -6,15 +6,15 @@
     <string>com.altbar.zoom-meetily-bridge</string>
     <key>ProgramArguments</key>
     <array>
-        <string>/Users/uk/cldf/scripts/ZoomMeetilyBridge.app/Contents/MacOS/ZoomMeetilyBridge</string>
+        <string>__HOME__/Applications/ZoomMeetilyBridge.app/Contents/MacOS/ZoomMeetilyBridge</string>
     </array>
     <key>RunAtLoad</key>
     <true/>
     <key>KeepAlive</key>
     <true/>
     <key>StandardOutPath</key>
-    <string>/Users/uk/.claude/logs/zoom-meetily-bridge-stdout.log</string>
+    <string>__HOME__/.claude/logs/zoom-meetily-bridge-stdout.log</string>
     <key>StandardErrorPath</key>
-    <string>/Users/uk/.claude/logs/zoom-meetily-bridge-stderr.log</string>
+    <string>__HOME__/.claude/logs/zoom-meetily-bridge-stderr.log</string>
 </dict>
 </plist>

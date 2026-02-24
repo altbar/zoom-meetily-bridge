@@ -2,6 +2,24 @@
 
 Автоматизация записи встреч: [Meetily](https://meetily.ai) начинает запись при входе в Zoom-встречу и останавливает при выходе.
 
+## Quick Install
+
+```bash
+bash install.sh
+```
+
+Или из GitHub (после публикации репо):
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/altbarnaul/zoom-meetily-bridge/main/install.sh | bash
+```
+
+Скрипт автоматически:
+- Компилирует Swift-демон в `~/Applications/ZoomMeetilyBridge.app`
+- Устанавливает LaunchAgent (автозапуск при логине)
+- Патчит Meetily на русский язык (если установлен)
+- Открывает настройки Accessibility
+
 ## Компоненты
 
 ### ZoomMeetilyBridge (Swift)
@@ -31,14 +49,15 @@ Rust `String` теперь читает `"ru"` (2 байта) → Whisper тра
 ## Структура проекта
 
 ```
-ZoomMeetilyBridge.swift    # Основной демон (Swift + NSAppleScript)
-Info.plist                 # Bundle metadata для .app
-com.altbar.zoom-meetily-bridge.plist  # LaunchAgent
-patch-meetily.py           # Патч для русского языка
-Makefile                   # build / install / restart
+install.sh                         # One-click установщик (self-contained)
+ZoomMeetilyBridge.swift            # Основной демон (Swift + NSAppleScript)
+Info.plist                         # Bundle metadata для .app
+com.altbar.zoom-meetily-bridge.plist  # LaunchAgent (шаблон с __HOME__)
+patch-meetily.py                   # Патч для русского языка
+Makefile                           # build / install / restart
 ```
 
-## Установка
+## Ручная установка
 
 ### 1. Собрать и установить бридж
 
@@ -47,13 +66,13 @@ make install
 ```
 
 Это:
-- Компилирует Swift → `../scripts/ZoomMeetilyBridge.app`
+- Компилирует Swift → `~/Applications/ZoomMeetilyBridge.app`
 - Копирует LaunchAgent в `~/Library/LaunchAgents/`
 - Запускает сервис
 
 ### 2. Дать Accessibility-доступ
 
-System Settings → Privacy & Security → Accessibility → `+` → выбрать `~/cldf/scripts/ZoomMeetilyBridge.app`
+System Settings → Privacy & Security → Accessibility → `+` → выбрать `~/Applications/ZoomMeetilyBridge.app`
 
 ### 3. Патч языка (опционально)
 
@@ -85,4 +104,5 @@ mv /Applications/meetily_pre_patch_backup.app /Applications/meetily.app
 
 ## Последние обновления
 
+- **2026-02-24**: Добавлен install.sh — one-click установщик, обновлён Makefile (~/Applications)
 - **2026-02-24**: Первый релиз — бридж (Swift) + языковой патч

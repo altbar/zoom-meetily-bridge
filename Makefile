@@ -1,4 +1,4 @@
-APP_DIR = ../scripts/ZoomMeetilyBridge.app
+APP_DIR = $(HOME)/Applications/ZoomMeetilyBridge.app
 BINARY = $(APP_DIR)/Contents/MacOS/ZoomMeetilyBridge
 PLIST_SRC = com.altbar.zoom-meetily-bridge.plist
 PLIST_DST = $(HOME)/Library/LaunchAgents/$(PLIST_SRC)
